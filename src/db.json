@@ -1,0 +1,59 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Coke 2.25lts",
+      "price": "0.5"
+    },
+    {
+      "id": 2,
+      "name": "Bread 000",
+      "price": "1"
+    },
+    {
+      "name": "Milk Bottle 2.5lts",
+      "price": "2.5",
+      "id": 3
+    },
+    {
+      "name": "Rib Eye 800g",
+      "price": "3",
+      "id": 4
+    },
+    {
+      "name": "Lucky Charms Corns 500g",
+      "price": "1.25",
+      "id": 5
+    },
+    {
+      "name": "sugar 39",
+      "price": "80",
+      "id": 6
+    },
+    {
+      "name": "sugar 20",
+      "price": "90",
+      "id": 7
+    },
+    {
+      "name": "23",
+      "price": "123",
+      "id": 8
+    },
+    {
+      "name": "sprite 2lts",
+      "price": "1",
+      "id": 9
+    },
+    {
+      "name": "sprite 2lts",
+      "price": "1",
+      "id": 10
+    },
+    {
+      "name": "wishkey 3x",
+      "price": "6",
+      "id": 11
+    }
+  ]
+}
