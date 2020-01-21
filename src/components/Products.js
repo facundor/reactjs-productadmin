@@ -12,7 +12,7 @@ function Products(props) {
   useEffect(()=>{
     const loadProducts = () => dispatch(getProductsActions())
     loadProducts();
-  },[dispatch]);
+  },[]);
 
   // Obtengo el state
   const productsInfo = useSelector( state => state.products);

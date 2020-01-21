@@ -7,7 +7,12 @@ import {
   GET_PRODUCT_ERROR,
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
-  DELETE_PRODUCT_ERROR } from "../types";
+  DELETE_PRODUCT_ERROR,
+  EDIT_PRODUCT,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_ERROR,
+  GET_EDIT_PRODUCT,
+} from "../types";
 import clienteAxios from "../config/axios";
 import Swal from "sweetalert2";
 import axiosClient from "../config/axios";
@@ -113,5 +118,46 @@ const deleteProductSuccess = (id) => ({
 
 const deleteProductError = () => ({
   type: DELETE_PRODUCT_ERROR,
+  payload: true
+});
+
+export function getEditProductAction (product){
+  return async (dispatch) => {
+    dispatch(getEditProduct(product))
+  }
+}
+
+const getEditProduct = (product) => ({
+  type: GET_EDIT_PRODUCT,
+  payload: product
+});
+
+// Elimina producto
+
+export function editProductAction(product){
+  return async (dispatch) => {
+    console.log("comienzo edicion")
+    dispatch(editProduct());
+    try {
+      console.log(product)
+      await axiosClient.put(`/products/${product.id}` , product) ;
+      dispatch(editProductSuccess(product));
+    } catch (error) {
+      dispatch(editProductError()); 
+    }
+  }
+}
+
+const editProduct = () => ({
+  type: EDIT_PRODUCT
+});
+
+const editProductSuccess = (product) => ({
+  type: EDIT_PRODUCT_SUCCESS,
+  payload: product
+});
+
+const editProductError = () => ({
+  type: EDIT_PRODUCT_ERROR,
   payload: true
 });
