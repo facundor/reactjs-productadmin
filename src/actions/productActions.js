@@ -1,6 +1,16 @@
-import { ADD_PRODUCT, ADD_PRODUCT_ERROR, ADD_PRODUCT_SUCCESS, GET_PRODUCT, GET_PRODUCT_SUCCESS, GET_PRODUCT_ERROR } from "../types";
+import { 
+  ADD_PRODUCT, 
+  ADD_PRODUCT_ERROR, 
+  ADD_PRODUCT_SUCCESS, 
+  GET_PRODUCT, 
+  GET_PRODUCT_SUCCESS, 
+  GET_PRODUCT_ERROR,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_ERROR } from "../types";
 import clienteAxios from "../config/axios";
 import Swal from "sweetalert2";
+import axiosClient from "../config/axios";
 
 
 // create new product
@@ -44,10 +54,10 @@ export function getProductsActions(){
     dispatch(getProducts());
 
     try {
-      // Insertar en la api
-      const products = await clienteAxios.get("/products");
-      // actualizar el state success
-      dispatch(getProductsSuccess(products.data));
+        // Insertar en la api
+        const products = await clienteAxios.get("/products");
+        // actualizar el state success
+        dispatch(getProductsSuccess(products.data));
     } catch (error) {
       //cambio a state error
       dispatch(getProductError(true));
@@ -69,4 +79,39 @@ const getProductsSuccess = (state) => ({
 const getProductError = state => ({
   type: GET_PRODUCT_ERROR,
   payload: state
+});
+
+// Elimina producto
+
+export function deleteProductAction(id){
+  return async (dispatch) => {
+    dispatch(deleteProduct(id));
+    try {
+      await axiosClient.delete(`/products/${id}` ) 
+      dispatch(deleteProductSuccess());
+      // mostrar msg
+      Swal.fire(
+        'Deleted!',
+        'Your product has been deleted.',
+        'success'
+      )
+    } catch (error) {
+      dispatch(deleteProductError()); 
+    }
+  }
+}
+
+const deleteProduct = (id) => ({
+  type: DELETE_PRODUCT,
+  payload: id
+});
+
+const deleteProductSuccess = (id) => ({
+  type: DELETE_PRODUCT_SUCCESS,
+  payload: id
+});
+
+const deleteProductError = () => ({
+  type: DELETE_PRODUCT_ERROR,
+  payload: true
 });

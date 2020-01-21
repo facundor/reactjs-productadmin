@@ -11,11 +11,13 @@ function Products(props) {
 
   useEffect(()=>{
     const loadProducts = () => dispatch(getProductsActions())
-    const products = loadProducts();
-  },[]);
+    loadProducts();
+  },[dispatch]);
 
   // Obtengo el state
   const productsInfo = useSelector( state => state.products);
+  const error = useSelector(state => state.products.error)
+  const loading = useSelector(state => state.products.loading)
 
   const productsArray = [...productsInfo.products]
 
@@ -24,9 +26,14 @@ function Products(props) {
   return (
    <Fragment>
      <h2 className="text-center my-5">Product List</h2>
+
+    {error ? <p className="font-weight-bold alert alert-danger text-center mt-4">Hubo un error</p>:null}
+    {loading ? <p className="text-center">Cargando...</p> : null}
+
      <table className="table table-striped">
        <thead className="bg-primary table-dark">
          <tr>
+           <th scope="col">Id</th>
            <th scope="col">Name</th>
            <th scope="col">Price</th>
            <th scope="col">Actions</th>
