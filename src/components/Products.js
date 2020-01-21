@@ -21,8 +21,6 @@ function Products(props) {
 
   const productsArray = [...productsInfo.products]
 
-  console.log(productsArray);
-
   return (
    <Fragment>
      <h2 className="text-center my-5">Product List</h2>

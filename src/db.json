@@ -1,24 +1,14 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Coke 2.25lts",
-      "price": "0.5"
-    },
-    {
-      "name": "Bread xbd",
-      "price": "8",
-      "id": 2
+      "name": "Coke 3 lts",
+      "price": "3.5",
+      "id": 1
     },
     {
       "name": "Milk Bottle 2.5lts",
       "price": "2.5",
       "id": 3
-    },
-    {
-      "name": "Rib Eye 800g",
-      "price": "3",
-      "id": 4
     },
     {
       "name": "wishkey 600c",
@@ -29,6 +19,31 @@
       "name": "water 4lts",
       "price": "2",
       "id": 12
+    },
+    {
+      "name": "7up 3lt",
+      "price": "2",
+      "id": 13
+    },
+    {
+      "name": "Apples 1kg",
+      "price": "1",
+      "id": 14
+    },
+    {
+      "name": "sugar 30l",
+      "price": "1",
+      "id": 15
+    },
+    {
+      "name": "orange juice 2lts",
+      "price": "2",
+      "id": 16
+    },
+    {
+      "name": "shoes nike air jordan 42\"",
+      "price": "23",
+      "id": 17
     }
   ]
 }

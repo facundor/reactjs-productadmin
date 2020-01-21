@@ -25,12 +25,13 @@ export function createNewProductAction(product) {
 
     try {
       // Insertar en la api
-      await clienteAxios.post("/products", product);
+      const newProduct = await clienteAxios.post("/products", product);
       // actualizar el state success
-      dispatch(addProductSuccess(product));
+      dispatch(addProductSuccess(newProduct.data));
       // alerta success
       Swal.fire("Success", "The product was successfuly added", "success");
     } catch (error) {
+      console.log(error);
       //cambio a state error
       dispatch(addProductError(true));
       // alerta de error
@@ -64,6 +65,7 @@ export function getProductsActions(){
         // actualizar el state success
         dispatch(getProductsSuccess(products.data));
     } catch (error) {
+      console.log(error);
       //cambio a state error
       dispatch(getProductError(true));
     }
@@ -101,6 +103,7 @@ export function deleteProductAction(id){
         'success'
       )
     } catch (error) {
+      console.log(error);
       dispatch(deleteProductError()); 
     }
   }
@@ -136,20 +139,20 @@ const getEditProduct = (product) => ({
 
 export function editProductAction(product){
   return async (dispatch) => {
-    console.log("comienzo edicion")
-    dispatch(editProduct());
+    dispatch(editProduct(product));
     try {
-      console.log(product)
       await axiosClient.put(`/products/${product.id}` , product) ;
       dispatch(editProductSuccess(product));
     } catch (error) {
+      console.log(error);
       dispatch(editProductError()); 
     }
   }
 }
 
-const editProduct = () => ({
-  type: EDIT_PRODUCT
+const editProduct = (product) => ({
+  type: EDIT_PRODUCT,
+  payload: product
 });
 
 const editProductSuccess = (product) => ({
